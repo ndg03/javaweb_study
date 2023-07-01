@@ -1,0 +1,16 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /demo
+
+# 自定义类的属性 配置
+user:
+  username: ndg
+  password: 123456
+
+color: white 黑色
+
+#logging:
+#  level:
+#    com:
+#      example: ERROR

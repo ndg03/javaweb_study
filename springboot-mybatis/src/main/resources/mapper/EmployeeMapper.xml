@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--nameplce   是绑定的接口中 的全类名  包名+ 类名-->
+<mapper namespace="com.ndg.mapper.EmployeeMapper">
+<!--id 是绑定接口中方法的名字    resultType返回数据的类型-->
+    <select id="getAllEmployees" resultType="com.ndg.entity.Employee">
+        select * from employees
+    </select>
+<!--id 绑定接口中的方法名      resultType 返回的数据类型-->
+    <select id="getEmployeeById" resultType="com.ndg.entity.Employee">
+        select * from employees where employee_id = #{id}
+    </select>
+</mapper>
