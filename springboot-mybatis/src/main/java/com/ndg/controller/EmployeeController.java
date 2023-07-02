@@ -61,7 +61,7 @@ public class EmployeeController {
     }
 
     //修改数据 /update?id=208
-    @RequestMapping("update")
+    @RequestMapping("/update")
     public int updateEmployee(Integer id, String first_name){
         Employee employee = new Employee();
         employee.setEmployeeId(id);

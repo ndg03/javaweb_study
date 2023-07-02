@@ -11,7 +11,7 @@
         where employee_id = #{employeeId};
     </update>
 <!--    根据id删除数据-->
-    <delete id="deleteEmployee">
+    <delete id="deleteEmployee" parameterType="com.ndg.entity.Employee">
         delete from employees where employee_id = #{employeeId};
     </delete>
     <!--id 是绑定接口中方法的名字    resultType返回数据的类型-->
