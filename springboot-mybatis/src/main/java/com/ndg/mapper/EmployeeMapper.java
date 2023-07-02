@@ -12,4 +12,6 @@ public interface EmployeeMapper {
     List<Employee> getAllEmployees();
 
     Employee getEmployeeById(Integer id);
+
+    int addEmployee(Employee employee);
 }

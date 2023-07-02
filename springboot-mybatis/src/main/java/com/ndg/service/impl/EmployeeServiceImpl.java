@@ -33,4 +33,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return employeeMapper.getEmployeeById(id);
     }
+
+    @Override
+    public int addEmployee(Employee employee) {
+
+        return employeeMapper.addEmployee(employee);
+    }
 }

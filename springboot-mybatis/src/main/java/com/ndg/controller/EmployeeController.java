@@ -3,6 +3,7 @@ package com.ndg.controller;
 import com.ndg.entity.Employee;
 import com.ndg.entity.Result;
 import com.ndg.service.EmployeeService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,10 +36,19 @@ public class EmployeeController {
     }
 
     @RequestMapping("/allEmployee")
-    public List<Employee> getAllEmployees(){
+    public Result getAllEmployees(){
 
         //交给业务逻辑层处理
-        return employeeService.getAllEmployees();
+        //return employeeService.getAllEmployees();
+        return Result.success(employeeService.getAllEmployees());
+    }
 
+    //添加一行数据 /add?id=207
+    @RequestMapping("/add")
+    public int addEmployee(Integer id){
+        Employee employee = new Employee();
+        employee.setEmployeeId(id);
+
+        return (employeeService.addEmployee(employee));
     }
 }

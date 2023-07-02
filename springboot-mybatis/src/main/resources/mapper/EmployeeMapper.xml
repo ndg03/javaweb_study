@@ -12,4 +12,9 @@
     <select id="getEmployeeById" resultType="com.ndg.entity.Employee">
         select * from employees where employee_id = #{id}
     </select>
+
+    <!--id 绑定接口中的方法名      resultType 返回的数据类型-->
+    <insert id="addEmployee">
+        insert employees (employee_id) values (#{employeeId})
+    </insert>
 </mapper>
