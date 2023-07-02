@@ -51,4 +51,12 @@ public class EmployeeController {
 
         return (employeeService.addEmployee(employee));
     }
+
+    //删除一行数据 /delete?id=207
+    @RequestMapping("/delete")
+    public int deleteEmployee(Integer id){
+        Employee employee = new Employee();
+        employee.setEmployeeId(id);
+        return (employeeService.deleteEmployee(employee));
+    }
 }

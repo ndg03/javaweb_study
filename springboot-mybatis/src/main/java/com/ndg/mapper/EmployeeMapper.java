@@ -14,4 +14,6 @@ public interface EmployeeMapper {
     Employee getEmployeeById(Integer id);
 
     int addEmployee(Employee employee);
+
+    int deleteEmployee(Employee employee);
 }
