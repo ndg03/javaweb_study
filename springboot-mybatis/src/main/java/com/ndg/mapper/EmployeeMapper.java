@@ -16,4 +16,6 @@ public interface EmployeeMapper {
     int addEmployee(Employee employee);
 
     int deleteEmployee(Employee employee);
+
+    int updateEmployee(Employee employee);
 }

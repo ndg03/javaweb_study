@@ -59,4 +59,13 @@ public class EmployeeController {
         employee.setEmployeeId(id);
         return (employeeService.deleteEmployee(employee));
     }
+
+    //修改数据 /update?id=208
+    @RequestMapping("update")
+    public int updateEmployee(Integer id, String first_name){
+        Employee employee = new Employee();
+        employee.setEmployeeId(id);
+        employee.setFirstName(first_name);
+        return employeeService.updateEmployee(employee);
+    }
 }

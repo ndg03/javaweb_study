@@ -45,4 +45,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return employeeMapper.deleteEmployee(employee);
     }
+
+    @Override
+    public int updateEmployee(Employee employee) {
+        return employeeMapper.updateEmployee(employee);
+    }
 }
