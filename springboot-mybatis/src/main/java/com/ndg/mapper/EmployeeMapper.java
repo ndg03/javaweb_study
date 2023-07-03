@@ -43,5 +43,5 @@ public interface EmployeeMapper {
 //    解决方法： 使用  ${}   $ 是字符串拼接符号 ，不安全 ，性能低，有SQL注入
 //    使用 concat拼接函数
     //@Select("select * from employees where first_name like concat('%',#{firstName},'%') and last_name like concat('%',#{lastName},'%')")
-    public List<Employee> select(String firstName,String lastName);
+    List<Employee> select(String firstName,String lastName);
 }
