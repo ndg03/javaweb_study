@@ -19,7 +19,7 @@ import java.util.Map;
 public class LogFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("控制层方法执行前打印日志1.。。。。。");
+        System.out.println("过滤器------控制层方法执行前打印日志1");
         Map<String,String[]> map = servletRequest.getParameterMap();
         map.entrySet()
                 .stream()
@@ -27,6 +27,6 @@ public class LogFilter implements Filter {
                         Arrays.toString(entry.getValue())));
         //放行请求 ，如果不执行该方法，就执行到这里
         filterChain.doFilter(servletRequest,servletResponse);
-        System.out.println("执行完成之后 打印日志 2~~~~~~~~~~~~~~~~~~~");
+        System.out.println("过滤器------执行完成之后 打印日志 2");
     }
 }

@@ -14,9 +14,9 @@ import java.io.IOException;
 public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("登录验证~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("过滤器------登录验证");
 
         filterChain.doFilter(servletRequest,servletResponse);
-        System.out.println("登录逻辑处理之后执行~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~·");
+        System.out.println("过滤器------登录逻辑处理之后执行");
     }
 }

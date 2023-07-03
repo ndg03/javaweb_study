@@ -1,5 +1,7 @@
 package com.ndg.service;
 
+import com.github.pagehelper.PageInfo;
+import com.ndg.common.Result;
 import com.ndg.entity.Employee;
 
 import java.util.List;
@@ -11,9 +13,11 @@ public interface EmployeeService {
 
     Employee getEmployeeById(Integer id);
 
-    int addEmployee(Employee employee);
+    void addEmployee(Employee employee);
 
-    int deleteEmployee(Employee employee);
+    void deleteEmployee(Integer id);
 
     int updateEmployee(Employee employee);
+
+    Result<PageInfo<Employee>> getPage(Integer currentPage, Integer pageSize);
 }

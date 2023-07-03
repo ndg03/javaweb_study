@@ -1,15 +1,19 @@
 package com.ndg.entity;
 
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @className: Employee
  * @author: ndg
  * @date: 2023/6/30 11:32
  */
-@Data
-@ToString
+@Data  //等于下面的四个注解
+//@Getter
+//@Setter
+//@ToString
+//@EqualsAndHashCode
+@NoArgsConstructor //无参构造
+@AllArgsConstructor // 全参构造
 public class Employee {
     private Integer employeeId;
     private String firstName;

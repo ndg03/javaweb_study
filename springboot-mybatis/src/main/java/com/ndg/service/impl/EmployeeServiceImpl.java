@@ -1,5 +1,9 @@
 package com.ndg.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.ndg.common.Result;
+import com.ndg.common.StatusCode;
 import com.ndg.entity.Employee;
 import com.ndg.mapper.EmployeeMapper;
 import com.ndg.service.EmployeeService;
@@ -29,21 +33,42 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public Result<PageInfo<Employee>> getPage(Integer currentPage, Integer pageSize){
+        //获取Dao层对象，调用dao层的方法
+        //1.设置分页参数
+        PageHelper.startPage(currentPage,pageSize);
+        //2.获取分页数据
+        List<Employee> list = employeeMapper.getAllEmployees();
+        //3.获取当前页的数据以及总条数等信息
+        PageInfo<Employee> pageInfo = new PageInfo<>(list);
+
+        long total = pageInfo.getTotal();//获取分页总条数
+        int nextPage = pageInfo.getNextPage();//获取下一页
+        System.out.println("下一页：" + nextPage + "总条数：" + total);
+
+        int prePage = pageInfo.getPrePage();//获取前一页
+        System.out.println("获取前页面：" + prePage);
+        List<Employee> list1 = pageInfo.getList();
+        System.out.println(list1);
+
+       return new Result<>(true, StatusCode.OK, "分页查询", pageInfo);
+    }
+
+
+    @Override
     public Employee getEmployeeById(Integer id) {
 
         return employeeMapper.getEmployeeById(id);
     }
 
     @Override
-    public int addEmployee(Employee employee) {
-
-        return employeeMapper.addEmployee(employee);
+    public void addEmployee(Employee employee) {
+        employeeMapper.addEmployee(employee);
     }
 
     @Override
-    public int deleteEmployee(Employee employee) {
-
-        return employeeMapper.deleteEmployee(employee);
+    public void deleteEmployee(Integer id) {
+        employeeMapper.deleteEmployee(id);
     }
 
     @Override

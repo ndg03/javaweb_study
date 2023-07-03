@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--nameplce   是绑定的接口中 的全类名  包名+ 类名-->
+<mapper namespace="com.ndg.mapper.EmployeeMapper">
+    <!--    根据id更新 first_name-->
+    <update id="updateEmployee">
+        update employees
+        set first_name = #{firstName}
+        where employee_id = #{employeeId};
+    </update>
+    <!--    根据id删除数据-->
+    <!--    <delete id="deleteEmployee" parameterType="com.ndg.entity.Employee">-->
+    <!--        delete from employees where employee_id = #{employeeId};-->
+    <!--    </delete>-->
+    <!--id 是绑定接口中方法的名字    resultType返回数据的类型   单条记录所封装的类型-->
+    <!--    根据id查询数据-->
+    <select id="getAllEmployees" resultType="com.ndg.entity.Employee">
+        select * from employees
+    </select>
+    <!--id 绑定接口中的方法名      resultType 返回的数据类型-->
+    <!--    显示所有数据-->
+    <select id="getEmployeeById" resultType="com.ndg.entity.Employee">
+        select * from employees where employee_id = #{id}
+    </select>
+
+    <!--id 绑定接口中的方法名      resultType 返回的数据类型-->
+    <!--    插入数据-->
+    <!--    <insert id="addEmployee">-->
+    <!--        insert employees (employee_id) values (#{employeeId})-->
+    <!--    </insert>-->
+
+    <!--    根据条件查询-->
+    <select id="select" resultType="com.ndg.entity.Employee">
+        select * from employees
+        <where>
+            <if test="firstName != null">
+                first_name like concat('%',#{firstName},'%')
+            </if>
+            <if test="lastName != null">
+                and last_name like concat('%',#{lastName},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
