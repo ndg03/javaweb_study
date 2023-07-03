@@ -71,6 +71,12 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.4.6</version>
         </dependency>
+<!--参数校验的依赖-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.4.1.Final</version>
+        </dependency>
 
     </dependencies>
 
