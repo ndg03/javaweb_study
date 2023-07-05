@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ndg.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.ndg.domain.MyUser" >
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        username,
+                password
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.ndg.domain.MyUser">
+        INSERT INTO t_users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="null != username and '' != username">
+                username,
+            </if>
+            <if test="null != password and '' != password">
+                password
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="null != username and '' != username">
+                #{username},
+            </if>
+            <if test="null != password and '' != password">
+                #{password}
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" >
+        DELETE FROM t_users
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.ndg.domain.MyUser">
+        UPDATE t_users
+        <set>
+            <if test="null != username and '' != username">username = #{username},</if>
+            <if test="null != password and '' != password">password = #{password}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <select id="load" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_users
+        WHERE id = #{id}
+    </select>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM t_users
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM t_users
+    </select>
+    <select id="selectByPrimaryKey" resultType="com.ndg.domain.MyUser">
+        select * from t_users where username = #{username}
+    </select>
+
+</mapper>
